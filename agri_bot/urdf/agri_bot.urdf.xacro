@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="agri_bot" >
+
+  <xacro:arg name="base_use_ros2_control" default="false"/>
+  <xacro:arg name="base_use_gazebo" default="false"/>
+  <xacro:arg name="arm_use_ros2_control" default="false"/>
+  <xacro:arg name="arm_use_gazebo" default="false"/>
+
+
+
+  <!-- dnt use this files for this simulation, coz we have made our own files-->
+  <xacro:arg name="use_ros2_control" default="false"/>
+  <xacro:arg name="use_gazebo" default="false"/>
+
+  <xacro:include filename="$(find smdw_robot_base)/urdf/smdw_robot_base.urdf.xacro" />
+  <xacro:include filename="$(find arm)/urdf/arm.urdf.xacro" />
+
+  <xacro:include filename="$(find agri_bot)/urdf/agri_bot_ros2_control.xacro"/>
+  <xacro:include filename="$(find agri_bot)/urdf/agri_bot_gazebo.xacro"/>
+
+  <joint name="smdw_base_to_arm" type="fixed">
+    <parent link="base_link" /> 
+    <child link="arm_base_link" /> 
+    <origin xyz="0 0 0.1016" rpy="0 0 0" /> 
+  </joint>
+
+
+</robot>
